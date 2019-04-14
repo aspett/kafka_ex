@@ -292,6 +292,10 @@ defmodule KafkaEx.Server do
         kafka_server_consumer_group(state)
       end
 
+      def handle_call(:get_state, _from, state) do
+        {:reply, state, state}
+      end
+
       def handle_call({:produce, produce_request}, _from, state) do
         kafka_server_produce(produce_request, state)
       end
